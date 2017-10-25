@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Product } from '../product';
+import { Product } from '../../service/product/product';
 
 @Component({
   selector: 'app-product-list',
@@ -7,7 +7,7 @@ import { Product } from '../product';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  @Input() productList: Product;
+  @Input() productList: Product[];
   @Input() title: String = "Product List";
   @Output() isVisible = new EventEmitter<boolean>();
   @Output() message = new EventEmitter<string>();
@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

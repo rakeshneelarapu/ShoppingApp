@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from './product'
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { ProductListComponent } from './product-list/product-list.component';
+import { Product } from '../service/product/product';
+import { ProductService } from '../service/product/product.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, AfterViewInit {
   productName: string = "LED TV";
   message: string;
-  products: Product[] = [
-    { id: 1, name: "SAMSUNG", price: 10000 },
-    { id: 2, name: "LG", price: 20000 },
-    { id: 3, name: "SONY", price: 25000 },
-    { id: 4, name: "INSIGMA", price: 30000 }
-  ];
+
+  //productService = new ProductService();
+
+  @ViewChild(ProductListComponent)
+  productListComponent: ProductListComponent;
+
+  @ViewChildren(ProductListComponent)
+  prouductListChildren: QueryList<ProductListComponent>;
 
   receiveFromChild(isVisible: boolean) {
     console.log(isVisible);
@@ -21,8 +25,14 @@ export class ProductComponent implements OnInit {
   messageFromChild(message: string) {
     this.message = message;
   }
-  constructor() { }
+  constructor(private productService: ProductService) { }
+
   ngOnInit() {
+    this.productListComponent.productList = this.productService.getProducts();
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.prouductListChildren);
   }
 
 }

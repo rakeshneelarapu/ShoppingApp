@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Product Page</h1>
   <!--CHILD COMPONENT -->
-  <app-product-list [productList]='products' (isVisible)='receiveFromChild($event)' (message)='messageFromChild($event)'></app-product-list>
+  <app-product-list (isVisible)='receiveFromChild($event)' (message)='messageFromChild($event)'></app-product-list>
   {{message}}
 </div>
