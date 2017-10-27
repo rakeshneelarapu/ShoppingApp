@@ -1,2 +1,8 @@
-<app-product></app-product>
-
+<div class="container">
+  JSON FORMAT -{{productList | json}}
+  <hr>
+  {{loginService.isLoggedin}}
+  <hr>
+  <button type="button" (click)='addProduct()' class="btn btn-primary">Add Product</button>
+  <app-product></app-product>
+</div>

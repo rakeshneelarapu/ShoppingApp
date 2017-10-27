@@ -8,10 +8,9 @@ import { ProductService } from '../service/product/product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit, AfterViewInit {
-  productName: string = "LED TV";
+  productName: string = 'LED TV';
   message: string;
-
-  //productService = new ProductService();
+  product: Product = new Product();
 
   @ViewChild(ProductListComponent)
   productListComponent: ProductListComponent;
@@ -25,11 +24,18 @@ export class ProductComponent implements OnInit, AfterViewInit {
   messageFromChild(message: string) {
     this.message = message;
   }
-  constructor(private productService: ProductService) { }
-
   ngOnInit() {
     this.productListComponent.productList = this.productService.getProducts();
+    //this.product = this.productService.getProducts()[0];
   }
+
+  addProduct() {
+    this.productService.addProduct(this.product);
+    this.productListComponent.productList = this.productService.getProducts();
+  }
+  constructor(private productService: ProductService) { }
+
+
 
   ngAfterViewInit(): void {
     console.log(this.prouductListChildren);
