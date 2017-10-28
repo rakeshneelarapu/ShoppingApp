@@ -1,0 +1,54 @@
+<h1>{{customerForm.value | json}}</h1>
+<form [formGroup]='customerForm'>
+  <div class="form-group">
+    <input class='form-control' type='text' formControlName='name' placeholder="Customer Name" name="custName">
+  </div>
+  <div class="form-group">
+    <input class='form-control' type='date' formControlName='dob' placeholder="Date of Birth" name="custDob">
+  </div>
+  <div class="form-group">
+    <input class='form-control' type='text' formControlName='email' placeholder="Email" name="custEmail">
+  </div>
+  <div class="form-group">
+    <input class='form-control' type='number' formControlName='phone' placeholder="Mobile No" name="custMobile">
+  </div>
+  <div formGroupName='address'>
+    <div class="form-group">
+      <input class='form-control' type='text' formControlName='addressLine1' placeholder="Address Line 1" name="custaddr1">
+    </div>
+    <div class="form-group">
+      <input class='form-control' type='text' formControlName='addressLine2' placeholder="Address Line 1" name="custaddr2">
+    </div>
+    <div class="form-group">
+      <input class='form-control' type='text' formControlName='city' placeholder="City" name="custCity">
+    </div>
+    <div class="form-group">
+      <input class='form-control' type='number' formControlName='pincode' placeholder="PinCode" name="custPin">
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="button" (click)='addCard()' class="btn btn-primary">Add Card</button>
+  </div>
+  <div formArrayName='cards'>
+    <div *ngFor='let card of customerForm.controls.cards.controls; let i=index'>
+      <div [formGroupName]='i'>
+        <div class="form-group">
+          <input class='form-control' type='text' formControlName='cardNumber' placeholder="Card Number" name="custCardNum">
+        </div>
+        <div class="form-group">
+          <input class='form-control' type='text' formControlName='expiryMonth' placeholder="Expiry Year" name="custCardExpMon">
+        </div>
+        <div class="form-group">
+          <input class='form-control' type='text' formControlName='expiryYear' placeholder="Expiry Year" name="custCardExpYear">
+        </div>
+        <div class="form-group">
+          <input class='form-control' type='number' formControlName='cvv' placeholder="Cvv" name="custCardCvv">
+        </div>
+        <div class="form-group">
+          <button type='button' class="btn btn-danger" (click)='removeCard(i)'>Remove Card</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
