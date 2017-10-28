@@ -1,0 +1,19 @@
+<p>
+  post works!
+</p>
+<form (submit)='addPost()' novalidate #postForm='ngForm'>
+  <div class="form-group">
+    <input class="form-control" type='number' required [(ngModel)]='post.userId' placeholder="User Id" name="userId">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type='text' required [(ngModel)]='post.title' placeholder="Title" name="title">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type='text' required [(ngModel)]='post.body' placeholder="Body" name="body">
+  </div>
+  <div class="form-group">
+    <button [disabled]='postForm.invalid' type="submit" class="btn btn-primary">Add Post</button>
+  </div>
+</form>
+
+<app-post-list></app-post-list>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-customer',
@@ -13,15 +14,15 @@ export class CustomerComponent implements OnInit {
   ngOnInit() {
     /*Example for Model Driven Forms*/
     this.customerForm = this.fb.group({
-      name: new FormControl('', []),
-      dob: new FormControl('', []),
-      email: new FormControl('', []),
-      phone: new FormControl('', []),
+      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      dob: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
       address: this.fb.group({
-        addressLine1: new FormControl('', []),
+        addressLine1: new FormControl('', [Validators.required]),
         addressLine2: new FormControl('', []),
-        city: new FormControl('', []),
-        pincode: new FormControl('', [])
+        city: new FormControl('', [Validators.required]),
+        pincode: new FormControl('', [Validators.required])
       }),
       cards: this.fb.array([this.buildForm()])
     });
@@ -41,10 +42,15 @@ export class CustomerComponent implements OnInit {
   // COMMON FUNCTION to BUILD CARD
   buildForm() {
     return this.fb.group({
-      cardNumber: new FormControl('', []),
-      expiryMonth: new FormControl('', []),
-      expiryYear: new FormControl('', []),
-      cvv: new FormControl('', [])
+      cardNumber: new FormControl('', [Validators.required]),
+      expiryMonth: new FormControl('', [Validators.required]),
+      expiryYear: new FormControl('', [Validators.required]),
+      cvv: new FormControl('', [Validators.required])
     });
+  }
+
+  addCustomer() {
+    console.log(this.customerForm.value);
+    this.customerForm.reset();
   }
 }

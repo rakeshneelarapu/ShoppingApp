@@ -8,21 +8,27 @@ import { ProductService } from './service/product/product.service';
 import { LoginService } from './service/login/login.service';
 import { NewloginService } from './service/newlogin/newlogin.service';
 import { CustomerComponent } from './customer/customer.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { PostComponent } from './post/post.component';
+import { PostListComponent } from './post/post-list/post-list.component';
+import { PostService } from './service/post/post.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     ProductListComponent,
-    CustomerComponent
+    CustomerComponent,
+    PostComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [ProductService, { provide: LoginService, useClass: NewloginService }],
+  providers: [ProductService, { provide: LoginService, useClass: NewloginService }, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
