@@ -1,12 +1,30 @@
 <div class="container">
-  JSON FORMAT -{{productList | json}}
-  <hr>
-  {{loginService.isLoggedin}}
-  <hr>
-  <button type="button" (click)='addProduct()' class="btn btn-primary">Add Product</button>
-  <app-product></app-product>
-  <hr>
+ <!--  <h1>Welcome to Home Page</h1> 
+  JSON FORMAT -{{productList | json}} 
+   <hr>
+   {{loginService.isLoggedin}} 
+
+   <button type="button" (click)='addProduct()' class="btn btn-primary">Add Product</button> 
+   <app-product></app-product> 
+   <hr>
   <app-customer></app-customer>
   <hr>
-  <app-post></app-post>
+  <app-post></app-post> -->
+  <nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="#">Shopping App</a>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a routerLink="post">Post</a>
+      </li>
+      <li>
+        <a routerLink="product">Product</a>
+      </li>
+      <li>
+        <a routerLink="customer">Customer</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <router-outlet></router-outlet>
 </div>

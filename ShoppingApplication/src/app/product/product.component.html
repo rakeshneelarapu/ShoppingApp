@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Product Page</h1>
   <p>JSON FORMAT - {{product|json}} {{productForm.invalid | json}} </p>
-  <p>{{productForm.valid | json}}</p>
+  <p>{{productForm.valid | json}}</p> 
   <form #productForm='ngForm' (submit)='addProduct()' novalidate>
     <div class="form-group">
       <input type="number" required [(ngModel)]='product.id' class="form-control" name="prodId" placeholder="Product Id" #pid='ngModel'>

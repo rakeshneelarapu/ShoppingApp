@@ -1,5 +1,5 @@
 <h1>{{customerForm.value | json}}</h1>
-<form [formGroup]='customerForm' (submit)='addCustomer()' novalidate>
+<form [formGroup]='customerForm' (submit)='c()' novalidate>
   <div class="form-group">
     <input class='form-control' type='text' formControlName='name' placeholder="Customer Name" name="custName">
     <div>

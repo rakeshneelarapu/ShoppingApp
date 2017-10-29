@@ -8,7 +8,7 @@ import { Product } from '../../service/product/product';
 })
 export class ProductListComponent implements OnInit {
   @Input() productList: Product[];
-  @Input() title: String = "Product List";
+  @Input() title: String = 'Product List';
   @Output() isVisible = new EventEmitter<boolean>();
   @Output() message = new EventEmitter<string>();
 
@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
 }

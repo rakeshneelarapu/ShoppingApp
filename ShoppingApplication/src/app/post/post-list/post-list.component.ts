@@ -10,8 +10,10 @@ export class PostListComponent implements OnInit {
   posts: Post[];
   constructor(private postService: PostService) { }
 
+  // Example for Get HTTp CALL
   ngOnInit() {
-   this.postService.getPosts().subscribe((data) => this.posts = data );
+    this.postService.getPosts().subscribe((data) =>
+      this.posts = data,
+      (err) => console.log(err.message));
   }
-
 }

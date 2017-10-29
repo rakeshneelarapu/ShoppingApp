@@ -12,6 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { PostService } from './service/post/post.service';
+import { HttpinterceptorService } from './interceptor/httpinterceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -20,15 +24,18 @@ import { PostService } from './service/post/post.service';
     ProductListComponent,
     CustomerComponent,
     PostComponent,
-    PostListComponent
+    PostListComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RoutingModule
   ],
-  providers: [ProductService, { provide: LoginService, useClass: NewloginService }, PostService],
+  providers: [ProductService, { provide: LoginService, useClass: NewloginService }, PostService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpinterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

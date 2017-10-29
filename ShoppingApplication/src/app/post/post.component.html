@@ -1,6 +1,8 @@
 <p>
   post works!
 </p>
+<button type="button" class="btn btn-primary" (click)='navigateToCust()'>GoTOCustomer</button>
+
 <form (submit)='addPost()' novalidate #postForm='ngForm'>
   <div class="form-group">
     <input class="form-control" type='number' required [(ngModel)]='post.userId' placeholder="User Id" name="userId">
