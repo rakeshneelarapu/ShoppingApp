@@ -9,6 +9,7 @@ export class LoginService {
   login(user: User) {
     if (user.userName === 'admin' && user.password === 'admin') {
       this.isLoggedin = true;
+      // sessionStorage.isLoggedin = true;
       return true;
     } else {
       return false;

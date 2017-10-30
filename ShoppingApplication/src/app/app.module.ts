@@ -7,7 +7,6 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductService } from './service/product/product.service';
 import { LoginService } from './service/login/login.service';
 import { NewloginService } from './service/newlogin/newlogin.service';
-import { CustomerComponent } from './customer/customer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post/post-list/post-list.component';
@@ -16,26 +15,32 @@ import { HttpinterceptorService } from './interceptor/httpinterceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RoutingModule } from './routing/routing.module';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './service/authGuard/auth.guard';
+import { CustomerModule } from './customer/customer.module';
+import { ProductModule } from './product/product.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    ProductListComponent,
-    CustomerComponent,
     PostComponent,
     PostListComponent,
     PageNotFoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RoutingModule
+    RoutingModule,
+    ProductModule,
+    CustomerModule,
+    SharedModule
   ],
   providers: [ProductService, { provide: LoginService, useClass: NewloginService }, PostService,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpinterceptorService, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: HttpinterceptorService, multi: true }, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
